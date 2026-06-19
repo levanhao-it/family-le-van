@@ -1,0 +1,1 @@
+const g=(t=[])=>{const n=[...new Set(t.map(e=>Number(e.generation)).filter(e=>Number.isInteger(e)&&e>0))].sort((e,r)=>e-r);return{total:t.length,alive:t.filter(e=>e.isAlive).length,generationCount:n.length,generations:n}};export{g};

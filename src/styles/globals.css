@@ -1,0 +1,513 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   GLOBAL BASE STYLES — ANCESTRAL PLATFORM
+   ============================================================ */
+
+@layer base {
+  :root {
+    --color-obsidian: #2D2218;
+    --color-charcoal: #2C241F;
+    --color-bronze: #E8C99A;
+    --color-amber: #8C6A43;
+    --color-ivory: #FAF4E8;
+    --color-cinnabar: #C0392B;
+    --color-gold: #C9A84C;
+    --color-jade: #4A7C6F;
+    --text-primary: rgba(250, 244, 232, 0.96);
+    --text-secondary: rgba(250, 244, 232, 0.82);
+    --text-muted: rgba(250, 244, 232, 0.7);
+    --text-faint: rgba(250, 244, 232, 0.58);
+    --text-subtle: rgba(250, 244, 232, 0.44);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-obsidian font-body antialiased;
+    background-color: #2D2218;
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(232, 201, 154, 0.3);
+    color: #FAF4E8;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #2D2218;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(232, 201, 154, 0.3);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(232, 201, 154, 0.5);
+  }
+}
+
+@layer components {
+
+  /* Glass card */
+  .glass-card {
+    @apply backdrop-blur-md border border-bronze-faint;
+    background: rgba(65, 48, 35, 0.6);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(232, 201, 154, 0.08);
+  }
+
+  /* Bronze divider */
+  .divider-bronze {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, rgba(232, 201, 154, 0.4), transparent);
+  }
+
+  /* Cinematic text */
+  .text-shadow-bronze {
+    text-shadow: 0 0 30px rgba(232, 201, 154, 0.4), 0 0 60px rgba(232, 201, 154, 0.2);
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 2px 20px rgba(232, 201, 154, 0.3);
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Cinematic section */
+  .cinematic-section {
+    @apply relative py-20 lg:py-32 overflow-hidden;
+  }
+
+  /* Badge bronze */
+  .badge-bronze {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-body tracking-widest uppercase;
+    border: 1px solid rgba(232, 201, 154, 0.3);
+    background: rgba(232, 201, 154, 0.08);
+    color: rgba(232, 201, 154, 0.8);
+    border-radius: 2px;
+  }
+
+  /* Node card */
+  .tree-node-card {
+    @apply glass-card rounded-lg cursor-pointer transition-all duration-300;
+    border: 1px solid rgba(232, 201, 154, 0.2);
+  }
+
+  .tree-node-card:hover {
+    border-color: rgba(232, 201, 154, 0.5);
+    box-shadow: 0 0 20px rgba(232, 201, 154, 0.2);
+  }
+
+  /* Vignette overlay */
+  .vignette {
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(45, 34, 24, 0.8) 100%);
+  }
+
+  /* Atmospheric overlay */
+  .atmospheric-bg {
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(140, 106, 67, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(232, 201, 154, 0.05) 0%, transparent 50%),
+      linear-gradient(180deg, #2D2218 0%, #2C241F 50%, #1A1410 100%);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-heading {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  .text-faint {
+    color: var(--text-faint);
+  }
+
+  .text-subtle {
+    color: var(--text-subtle);
+  }
+
+  .hover-text-primary:hover {
+    color: var(--text-primary) !important;
+  }
+
+  .hover-text-secondary:hover {
+    color: var(--text-secondary) !important;
+  }
+
+  /* React Flow overrides */
+  .react-flow__background {
+    background-color: transparent !important;
+  }
+
+  .react-flow__edge-path {
+    stroke: rgba(232, 201, 154, 0.4) !important;
+    stroke-width: 1.5 !important;
+  }
+
+  .react-flow__edge.selected .react-flow__edge-path {
+    stroke: rgba(232, 201, 154, 0.9) !important;
+  }
+
+  /* ── Pulse wave: blood flowing through the family tree ─────── */
+  @keyframes edge-blood-pulse {
+    0% {
+      stroke-dashoffset: 900;
+      opacity: 0;
+    }
+
+    7% {
+      opacity: 1;
+    }
+
+    68% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 0;
+    }
+  }
+
+  /* Higher specificity than .react-flow__edge-path, so !important wins */
+  .edge-blood-pulse .react-flow__edge-path {
+    stroke: #4ADE80 !important;
+    stroke-width: 3.5 !important;
+    stroke-dasharray: 900 !important;
+    stroke-linecap: round !important;
+    animation: edge-blood-pulse 1.15s var(--pulse-delay, 0s) ease-out forwards !important;
+    filter: drop-shadow(0 0 5px rgba(74, 222, 128, 0.8));
+  }
+
+  .react-flow__minimap {
+    background: rgba(45, 34, 24, 0.9) !important;
+    border: 1px solid rgba(232, 201, 154, 0.2) !important;
+  }
+
+  .react-flow__controls {
+    background: rgba(44, 36, 31, 0.8) !important;
+    border: 1px solid rgba(232, 201, 154, 0.2) !important;
+    backdrop-filter: blur(12px);
+  }
+
+  .react-flow__controls button {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(232, 201, 154, 0.1) !important;
+    color: rgba(232, 201, 154, 0.7) !important;
+  }
+
+  .react-flow__controls button:hover {
+    background: rgba(232, 201, 154, 0.1) !important;
+  }
+}
+
+/* ============================================================
+   LIGHT THEME OVERRIDES
+   Applied when html.light-theme (isDark = false, default)
+   ============================================================ */
+
+/* Layout background */
+.light-bg {
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(232, 201, 154, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(201, 168, 76, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #FAF4E8 0%, #F0E8D8 60%, #EDE4D3 100%);
+}
+
+html.light-theme {
+  --text-primary: rgba(47, 37, 30, 0.96);
+  --text-secondary: rgba(47, 37, 30, 0.84);
+  --text-muted: rgba(47, 37, 30, 0.74);
+  --text-faint: rgba(47, 37, 30, 0.64);
+  --text-subtle: rgba(47, 37, 30, 0.54);
+}
+
+html.light-theme body {
+  background-color: #FAF4E8;
+  color: var(--text-primary);
+}
+
+html.light-theme ::selection {
+  background: rgba(140, 106, 67, 0.2);
+  color: #2C241F;
+}
+
+html.light-theme ::-webkit-scrollbar-track {
+  background: #EDE4D3;
+}
+
+html.light-theme ::-webkit-scrollbar-thumb {
+  background: rgba(180, 130, 60, 0.3);
+}
+
+html.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 130, 60, 0.5);
+}
+
+/* Cards & glass */
+html.light-theme .glass-card {
+  background: rgba(255, 251, 243, 0.88) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(232, 201, 154, 0.35) !important;
+  border-color: rgba(180, 130, 60, 0.25) !important;
+}
+
+html.light-theme .tree-node-card {
+  border-color: rgba(180, 130, 60, 0.2) !important;
+}
+
+html.light-theme .tree-node-card:hover {
+  border-color: rgba(180, 130, 60, 0.5) !important;
+  box-shadow: 0 0 20px rgba(180, 130, 60, 0.15) !important;
+}
+
+/* Badge */
+html.light-theme .badge-bronze {
+  border-color: rgba(180, 130, 60, 0.35) !important;
+  background: rgba(180, 130, 60, 0.08) !important;
+  color: rgba(140, 90, 30, 0.9) !important;
+}
+
+/* Divider */
+html.light-theme .divider-bronze {
+  background: linear-gradient(90deg, transparent, rgba(140, 106, 67, 0.35), transparent);
+}
+
+/* Text shadows */
+html.light-theme .text-shadow-bronze {
+  text-shadow: 0 0 20px rgba(140, 106, 67, 0.3), 0 0 40px rgba(140, 106, 67, 0.15);
+}
+
+html.light-theme .text-shadow-glow {
+  text-shadow: 0 2px 12px rgba(140, 106, 67, 0.25);
+}
+
+/* Atmospheric background */
+html.light-theme .atmospheric-bg {
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(201, 168, 76, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(140, 106, 67, 0.05) 0%, transparent 50%),
+    linear-gradient(180deg, #FAF4E8 0%, #F2E8D5 50%, #EDE4D3 100%);
+}
+
+/* Vignette */
+html.light-theme .vignette {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(210, 190, 160, 0.3) 100%);
+}
+
+/* Background color overrides */
+html.light-theme .bg-obsidian {
+  background-color: #FAF4E8 !important;
+}
+
+html.light-theme .bg-charcoal {
+  background-color: #EDE4D3 !important;
+}
+
+html.light-theme .bg-lacquer {
+  background-color: #F5EDE0 !important;
+}
+
+/* Bronze text → dark amber in light mode (high contrast on #FAF4E8) */
+html.light-theme .text-bronze {
+  color: #7A4A18 !important;
+}
+
+html.light-theme .text-bronze\/10 {
+  color: rgba(122, 74, 24, 0.1) !important;
+}
+
+html.light-theme .text-bronze\/20 {
+  color: rgba(122, 74, 24, 0.2) !important;
+}
+
+html.light-theme .text-bronze\/30 {
+  color: rgba(122, 74, 24, 0.3) !important;
+}
+
+html.light-theme .text-bronze\/40 {
+  color: rgba(122, 74, 24, 0.4) !important;
+}
+
+html.light-theme .text-bronze\/50 {
+  color: rgba(122, 74, 24, 0.5) !important;
+}
+
+html.light-theme .text-bronze\/60 {
+  color: rgba(122, 74, 24, 0.6) !important;
+}
+
+html.light-theme .text-bronze\/70 {
+  color: rgba(122, 74, 24, 0.7) !important;
+}
+
+html.light-theme .text-bronze\/80 {
+  color: rgba(122, 74, 24, 0.8) !important;
+}
+
+html.light-theme .text-bronze\/90 {
+  color: rgba(122, 74, 24, 0.9) !important;
+}
+
+html.light-theme .hover\:text-bronze:hover {
+  color: #7A4A18 !important;
+}
+
+/* Gold text → dark gold in light mode */
+html.light-theme .text-gold {
+  color: #7A5B0A !important;
+}
+
+html.light-theme .text-gold\/50 {
+  color: rgba(122, 91, 10, 0.5) !important;
+}
+
+html.light-theme .text-gold\/60 {
+  color: rgba(122, 91, 10, 0.6) !important;
+}
+
+html.light-theme .text-gold\/70 {
+  color: rgba(122, 91, 10, 0.7) !important;
+}
+
+html.light-theme .text-gold\/80 {
+  color: rgba(122, 91, 10, 0.8) !important;
+}
+
+html.light-theme .text-gold\/90 {
+  color: rgba(122, 91, 10, 0.9) !important;
+}
+
+/* Jade → deeper teal in light mode */
+html.light-theme .text-jade {
+  color: #1E5248 !important;
+}
+
+html.light-theme .text-jade\/70 {
+  color: rgba(30, 82, 72, 0.7) !important;
+}
+
+html.light-theme .text-jade\/80 {
+  color: rgba(30, 82, 72, 0.8) !important;
+}
+
+/* Cinnabar stays readable; reinforce amber */
+html.light-theme .text-amber {
+  color: #7A4A18 !important;
+}
+
+/* Bronze backgrounds – use dark-amber base for active/hover states */
+html.light-theme .bg-bronze {
+  background-color: #7A4A18 !important;
+}
+
+html.light-theme .bg-bronze\/5 {
+  background-color: rgba(122, 74, 24, 0.05) !important;
+}
+
+html.light-theme .bg-bronze\/10 {
+  background-color: rgba(122, 74, 24, 0.08) !important;
+}
+
+html.light-theme .bg-bronze\/20 {
+  background-color: rgba(122, 74, 24, 0.12) !important;
+}
+
+html.light-theme .bg-bronze\/30 {
+  background-color: rgba(122, 74, 24, 0.18) !important;
+}
+
+/* Bronze borders – increase opacity so they're visible */
+html.light-theme .border-bronze\/10 {
+  border-color: rgba(122, 74, 24, 0.18) !important;
+}
+
+html.light-theme .border-bronze\/20 {
+  border-color: rgba(122, 74, 24, 0.28) !important;
+}
+
+html.light-theme .border-bronze\/30 {
+  border-color: rgba(122, 74, 24, 0.38) !important;
+}
+
+html.light-theme .border-bronze\/40 {
+  border-color: rgba(122, 74, 24, 0.48) !important;
+}
+
+html.light-theme .border-bronze\/60 {
+  border-color: rgba(122, 74, 24, 0.65) !important;
+}
+
+/* Dark auxiliary text colors */
+html.light-theme .text-smoke {
+  color: #5A4A3A !important;
+}
+
+html.light-theme .text-ink {
+  color: #3A2A1A !important;
+}
+
+html.light-theme .text-charcoal {
+  color: #2C241F !important;
+}
+
+/* React Flow — light */
+html.light-theme .react-flow__minimap {
+  background: rgba(250, 244, 232, 0.95) !important;
+  border: 1px solid rgba(180, 130, 60, 0.25) !important;
+}
+
+html.light-theme .react-flow__controls {
+  background: rgba(255, 251, 243, 0.9) !important;
+  border: 1px solid rgba(180, 130, 60, 0.25) !important;
+}
+
+html.light-theme .react-flow__controls button {
+  border-bottom: 1px solid rgba(180, 130, 60, 0.15) !important;
+  color: rgba(140, 90, 30, 0.8) !important;
+}
+
+html.light-theme .react-flow__controls button:hover {
+  background: rgba(180, 130, 60, 0.08) !important;
+}
+
+html.light-theme .react-flow__edge-path {
+  stroke: rgba(140, 106, 67, 0.45) !important;
+}
+
+html.light-theme .react-flow__edge.selected .react-flow__edge-path {
+  stroke: rgba(100, 72, 40, 0.85) !important;
+}
