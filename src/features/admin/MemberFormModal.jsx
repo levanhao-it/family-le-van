@@ -7,7 +7,7 @@ import AvatarUpload from './AvatarUpload'
 const ROLES = ['patriarch', 'matriarch', 'elder', 'merit', 'member', 'child']
 const BRANCHES = ['main', 'sy', 'nhut', 'ly', 'thong']
 const ROLE_LABELS = { patriarch: 'Thủy tổ', matriarch: 'Tổ mẫu', elder: 'Trưởng thượng', merit: 'Người có công', member: 'Thành viên', child: 'Con cháu' }
-const BRANCH_LABELS = { main: 'Thủy tổ (main)', sy: 'Chi Sỹ', nhut: 'Chi Nhứt', ly: 'Chi Lý', thong: 'Chi Thông' }
+const BRANCH_LABELS = { main: 'Thủy tổ', sy: 'Chi Sỹ', nhut: 'Chi Nhứt', ly: 'Chi Lý', thong: 'Chi Thông' }
 
 const EMPTY_FORM = {
   fullName: '',
