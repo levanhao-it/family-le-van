@@ -55,6 +55,15 @@ const getDescendants = (memberId, members) => {
   return result
 }
 
+const normalizeSearchText = (text) =>
+  text
+    .toString()
+    .normalize('NFD') // Tách dấu khỏi ký tự
+    .replace(/[\u0300-\u036f]/g, '') // Xóa các ký tự dấu vừa tách
+    .replace(/đ/g, 'd') // Xử lý riêng chữ đ
+    .replace(/Đ/g, 'D') // Xử lý riêng chữ Đ
+    .toLowerCase()
+
 const getLineageTrail = (memberId, members) => {
   const trail = []
   const visited = new Set()
@@ -294,11 +303,11 @@ const InspectorSection = ({ eyebrow, title, description, action, children, large
           {eyebrow}
         </p>
         <h3 style={{ color: '#E2E8F0', fontSize: large ? 20 : 16, fontWeight: 700, lineHeight: 1.25, margin: 0 }}>
-          {title}
+          {/* {title} */}
         </h3>
         {description && (
           <p style={{ color: '#94A3B8', fontSize: large ? 14 : 12, lineHeight: 1.6, marginTop: 6, marginBottom: 0 }}>
-            {description}
+            {/* {description} */}
           </p>
         )}
       </div>
@@ -686,8 +695,8 @@ const FamilyTreeVisualization = ({ displayMode = 'default' }) => {
           const q = search.toLowerCase()
           const matchSearch =
             noSearch ||
-            m.fullName.toLowerCase().includes(q) ||
-            (m.nickname?.toLowerCase().includes(q) ?? false)
+            normalizeSearchText(m.fullName).includes(normalizeSearchText(q)) ||
+            (m.nickname && normalizeSearchText(m.nickname).includes(normalizeSearchText(q)))
           const matchBranch = filters.branch === 'all' || m.branch === filters.branch
           const matchGender = filters.gender === 'all' || m.gender === filters.gender
           const matchAlive =
@@ -746,8 +755,8 @@ const FamilyTreeVisualization = ({ displayMode = 'default' }) => {
 
     const found = liveMembers.find(
       (m) =>
-        m.fullName.toLowerCase().includes(query.toLowerCase()) ||
-        m.nickname?.toLowerCase().includes(query.toLowerCase())
+        normalizeSearchText(m.fullName).includes(normalizeSearchText(query)) ||
+        normalizeSearchText(m.nickname).includes(normalizeSearchText(query))
     )
     setHighlightedId(found?.id || null)
     if (found && !isWideLayout) setIsInspectorOpen(true)
@@ -1169,9 +1178,6 @@ const FamilyTreeVisualization = ({ displayMode = 'default' }) => {
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          <div style={{ padding: isElderMode ? 16 : 14, borderRadius: 14, background: 'rgba(15,23,42,0.78)', border: '1px dashed rgba(148,163,184,0.2)', color: '#94A3B8', fontSize: isElderMode ? 14 : 12, lineHeight: 1.6 }}>
-            Bấm một node trên cây hoặc dùng search ở bước đầu để xem breadcrumb tổ tiên, sau đó bật focus mode nếu muốn cô lập riêng nhánh đó.
-          </div>
           <button
             type="button"
             onClick={() => openInspectorTab('search')}
@@ -1241,20 +1247,6 @@ const FamilyTreeVisualization = ({ displayMode = 'default' }) => {
   const inspectorContent = (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minHeight: 0, height: '100%' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-        <div>
-          <p style={{ color: '#64748B', fontSize: 10, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 6 }}>
-            {isElderMode ? 'Trình chiếu gia phả' : 'Tree workflow'}
-          </p>
-          <h2 style={{ color: '#F8FAFC', fontSize: isElderMode ? 24 : 20, fontWeight: 700, lineHeight: 1.2, margin: 0 }}>
-            {isElderMode ? 'Chữ lớn hơn, ít bước hơn, phù hợp họp mặt gia đình' : 'Đi từ tìm kiếm sang focus rồi mới so sánh'}
-          </h2>
-          <p style={{ color: '#94A3B8', fontSize: isElderMode ? 14 : 12, lineHeight: 1.6, marginTop: 6, marginBottom: 0 }}>
-            {isElderMode
-              ? 'Chỉ giữ lại bốn việc rõ ràng nhất: tìm người, xem nhánh, mở ảnh hồ sơ và quan sát toàn bộ cây mà không bị motion hay compare làm rối.'
-              : 'Inspector được chia theo tác vụ để giảm nhiễu: tìm đúng người, cô lập đúng nhánh, rồi mới mở quan hệ nâng cao.'}
-          </p>
-        </div>
-
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           {availableInspectorTabs.map((tab) => (
             <InspectorTabButton

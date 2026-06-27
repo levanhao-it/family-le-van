@@ -109,7 +109,7 @@ const Lightbox = ({ image, onClose, T }) => {
                   </div>
 
                   <div className="grid gap-3 mt-5 sm:grid-cols-2">
-                    <ArchiveSection label="Nguoi lien quan">
+                    <ArchiveSection label="Người liên quan">
                       {image.relatedMemberRefs?.length ? (
                         <div className="flex flex-wrap gap-2">
                           {image.relatedMemberRefs.map((member) => (
@@ -119,22 +119,22 @@ const Lightbox = ({ image, onClose, T }) => {
                           ))}
                         </div>
                       ) : (
-                        <span className="text-muted">Chua xac dinh ro nhan vat trong tu lieu nay.</span>
+                        <span className="text-muted">Chưa xác định rõ nhân vật trong tư liệu này.</span>
                       )}
                     </ArchiveSection>
 
-                    <ArchiveSection label="Moc thoi gian">
-                      <p>{archive?.timeframe?.label ?? 'Chua xac dinh thoi diem chup hoac so hoa.'}</p>
+                    <ArchiveSection label="Mốc thời gian">
+                      <p>{archive?.timeframe?.label ?? 'Chưa xác định thời điểm chụp hoặc sở hữu.'}</p>
                     </ArchiveSection>
 
-                    <ArchiveSection label="Dia diem">
-                      <p>{archive?.location?.label ?? 'Chua xac dinh dia diem.'}</p>
+                    <ArchiveSection label="Địa điểm">
+                      <p>{archive?.location?.label ?? 'Chưa xác định địa điểm.'}</p>
                       {archive?.location?.note && (
                         <p className="mt-1 text-[11px] text-muted">{archive.location.note}</p>
                       )}
                     </ArchiveSection>
 
-                    <ArchiveSection label="Nguon tu lieu" className="sm:col-span-2">
+                    <ArchiveSection label="Nguồn tư liệu" className="sm:col-span-2">
                       {archive?.sources?.length ? (
                         <ul className="space-y-2">
                           {archive.sources.map((source, index) => (
@@ -144,12 +144,12 @@ const Lightbox = ({ image, onClose, T }) => {
                           ))}
                         </ul>
                       ) : (
-                        <span className="text-muted">Chua bo sung nguon doi chieu.</span>
+                        <span className="text-muted">Chưa bổ sung nguồn đối chiếu.</span>
                       )}
                     </ArchiveSection>
 
-                    <ArchiveSection label="Ghi chu kiem chung" className="sm:col-span-2">
-                      <p className="text-secondary">{archive?.verification?.note ?? 'Chua co ghi chu kiem chung.'}</p>
+                    <ArchiveSection label="Ghi chú kiểm chứng" className="sm:col-span-2">
+                      <p className="text-secondary">{archive?.verification?.note ?? 'Chưa có ghi chú kiểm chứng.'}</p>
                     </ArchiveSection>
                   </div>
                 </div>
@@ -281,8 +281,8 @@ const FamilyGallery = () => {
             key={cat.id}
             onClick={() => setActiveCategory(cat.id)}
             className={`px-4 py-1.5 text-xs font-body tracking-wider uppercase rounded-sm transition-all duration-200 ${activeCategory === cat.id
-                ? 'bg-bronze/20 text-bronze border border-bronze/40'
-                : 'border border-ivory/10 text-muted hover:border-bronze/20 hover-text-secondary'
+              ? 'bg-bronze/20 text-bronze border border-bronze/40'
+              : 'border border-ivory/10 text-muted hover:border-bronze/20 hover-text-secondary'
               }`}
           >
             {cat.label}

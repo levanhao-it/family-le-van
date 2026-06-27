@@ -54,7 +54,7 @@ const FamilyRulesSection = () => {
         <div className="badge-bronze inline-flex mb-3">Gia huấn — 1930</div>
         <h3 className="mb-2 font-display text-xl text-primary">10 Điều Gia huấn dòng họ</h3>
         <p className="font-body text-xs text-muted">
-          Do ông Nguyễn Phúc Minh soạn thảo — còn lưu giữ bản gốc
+          Do ông ... soạn thảo — còn lưu giữ bản gốc
         </p>
       </div>
 

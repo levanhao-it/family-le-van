@@ -1,6 +1,6 @@
 // ============================================================
 // FAMILY MEMBERS DATA — Dòng họ Lê Văn
-// Nguyên quán: Thăng Bình, Quảng Nam
+// Nguyên quán: Thăng Bình, Đà Nẵng
 // Hiện sinh sống: Đồng Nai
 // 5 thế hệ — Chuyển đổi từ gia phả gốc
 // ============================================================
@@ -19,7 +19,7 @@ export const familyMembers = [
     avatar: null,
     generation: 1,
     role: 'patriarch',
-    biography: 'Thủy tổ dòng họ Lê Văn tại Thăng Bình, Quảng Nam. Sinh năm Đinh Mão (1927), mất năm Giáp Dần (1974). Là người đặt nền móng cho dòng họ, để lại 6 người con.',
+    biography: 'Thủy tổ dòng họ Lê Văn tại Huyện Thăng Bình, Tỉnh Quảng Nam. Sau khi sáp nhập hiện nay là Xã Thăng Bình, Thành phố Đà Nẵng. Sinh năm Đinh Mão (1927), mất năm Giáp Dần (1974). Là người đặt nền móng cho dòng họ, để lại 6 người con.',
     occupation: 'Nông nghiệp',
     achievements: [],
     fatherId: null,
@@ -28,7 +28,7 @@ export const familyMembers = [
     childrenIds: ['g2-001', 'g2-003', 'g2-005', 'g2-007', 'g2-009', 'g2-010'],
     branch: 'main',
     isAlive: false,
-    location: 'Thăng Bình, Quảng Nam',
+    location: 'Xã Thăng Bình, Thành phố Đà Nẵng',
   },
   {
     id: 'g1-002',
@@ -49,7 +49,7 @@ export const familyMembers = [
     childrenIds: ['g2-001', 'g2-003', 'g2-005', 'g2-007', 'g2-009', 'g2-010'],
     branch: 'main',
     isAlive: false,
-    location: 'Thăng Bình, Quảng Nam',
+    location: 'Khu Phố Phước Lộc, Phường Phước Long, Tỉnh Đồng Nai',
   },
 
   // ============================================================
@@ -74,7 +74,7 @@ export const familyMembers = [
     childrenIds: ['g3-001', 'g3-003', 'g3-005', 'g3-007', 'g3-008'],
     branch: 'sy',
     isAlive: false,
-    location: 'Quảng Nam',
+    location: 'Khu Phố Phước Lộc, Phường Phước Long, Tỉnh Đồng Nai',
   },
   {
     id: 'g2-002',
@@ -95,7 +95,7 @@ export const familyMembers = [
     childrenIds: ['g3-001', 'g3-003', 'g3-005', 'g3-007', 'g3-008'],
     branch: 'sy',
     isAlive: true,
-    location: 'Đồng Nai',
+    location: 'Khu Phố Phước Lộc, Phường Phước Long, Tỉnh Đồng Nai',
   },
   {
     id: 'g2-003',
@@ -116,7 +116,7 @@ export const familyMembers = [
     childrenIds: ['g3-009', 'g3-011', 'g3-013', 'g3-015', 'g3-017'],
     branch: 'nhut',
     isAlive: false,
-    location: 'Quảng Nam',
+    location: 'Khu Phố Bù Nho, Phường Phú Riềng, Tỉnh Đồng Nai',
   },
   {
     id: 'g2-004',
@@ -137,7 +137,7 @@ export const familyMembers = [
     childrenIds: ['g3-009', 'g3-011', 'g3-013', 'g3-015', 'g3-017'],
     branch: 'nhut',
     isAlive: true,
-    location: 'Đồng Nai',
+    location: 'Khu Phố Bù Nho, Phường Phú Riềng, Tỉnh Đồng Nai',
   },
   {
     id: 'g2-005',

@@ -148,7 +148,7 @@ const TimelineEventCard = ({ event, side }) => {
                   )}
                 </ArchiveSection>
 
-                <ArchiveSection label="Nguoi lien quan">
+                <ArchiveSection label="Người liên quan">
                   {event.relatedMemberRefs?.length ? (
                     <div className="flex flex-wrap gap-2">
                       {event.relatedMemberRefs.map((member) => (

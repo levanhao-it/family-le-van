@@ -5,7 +5,7 @@ export const APP_CONFIG = {
   clannName: 'LÊ VĂN',
   subtitle: 'Lưu giữ cội nguồn qua nhiều thế hệ',
   founded: '1927',
-  village: 'Thăng Bình, Quảng Nam',
+  village: 'Xã Thăng Bình, Thành phố Đà Nẵng',
   totalGenerations: 5,
 }
 

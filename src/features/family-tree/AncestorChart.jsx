@@ -275,15 +275,24 @@ const AncestorChart = () => {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
+  const normalizeSearchText = (text) =>
+    text
+      .toString()
+      .normalize('NFD') // Tách dấu khỏi ký tự
+      .replace(/[\u0300-\u036f]/g, '') // Xóa các ký tự dấu vừa tách
+      .replace(/đ/g, 'd') // Xử lý riêng chữ đ
+      .replace(/Đ/g, 'D') // Xử lý riêng chữ Đ
+      .toLowerCase()
+
   // Filtered member list for search dropdown
   const filteredMembers = useMemo(() => {
     const q = searchTerm.trim().toLowerCase()
-    if (!q) return allMembers.slice(0, 12)
+    if (!q) return allMembers
     return allMembers
       .filter(
         (m) =>
-          m.fullName.toLowerCase().includes(q) ||
-          (m.nickname?.toLowerCase().includes(q) ?? false),
+          normalizeSearchText(m.fullName).includes(normalizeSearchText(q)) ||
+          (m.nickname && normalizeSearchText(m.nickname).includes(normalizeSearchText(q))),
       )
       .slice(0, 14)
   }, [allMembers, searchTerm])

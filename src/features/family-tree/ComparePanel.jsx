@@ -131,7 +131,7 @@ const getQuestionResponse = (questionId, relationship, m1, m2) => {
 
   return {
     title: `${getShortName(m1)} gọi ${getShortName(m2)} là "${relationship.how1Calls2}"`,
-    detail: `${getShortName(m2)} gọi lại ${getShortName(m1)} là "${relationship.how2Calls1}". Panel vẫn giữ đầy đủ bảng xưng hô phía dưới để đối chiếu hai chiều.`,
+    detail: `${getShortName(m2)} gọi lại ${getShortName(m1)} là "${relationship.how2Calls1}".`,
     metric: '2 chiều',
     metricLabel: 'Xưng hô',
   }
@@ -149,11 +149,20 @@ const MemberPicker = ({ value, onChange, placeholder, accentColor, members }) =>
     return members
       .filter(
         (m) =>
-          m.fullName.toLowerCase().includes(q) ||
-          (m.nickname?.toLowerCase().includes(q) ?? false),
+          normalizeSearchText(m.fullName).includes(normalizeSearchText(q)) ||
+          (m.nickname && normalizeSearchText(m.nickname).includes(normalizeSearchText(q))),
       )
       .slice(0, 20)
   }, [query, members])
+
+  const normalizeSearchText = (text) =>
+    text
+      .toString()
+      .normalize('NFD') // Tách dấu khỏi ký tự
+      .replace(/[\u0300-\u036f]/g, '') // Xóa các ký tự dấu vừa tách
+      .replace(/đ/g, 'd') // Xử lý riêng chữ đ
+      .replace(/Đ/g, 'D') // Xử lý riêng chữ Đ
+      .toLowerCase()
 
   // Close dropdown on outside click
   useEffect(() => {

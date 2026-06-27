@@ -101,7 +101,7 @@ const PageShell = ({
                       : 'border-bronze/15 bg-ivory/72 shadow-glass'
                   )}
                 >
-                  <p className="font-display text-[10px] tracking-[0.28em] uppercase text-bronze/60">
+                  <p className="font-display text-[10px] tracking-[0.28em] uppercase">
                     {stat.label}
                   </p>
                   <p className="mt-3 font-display text-2xl leading-none text-primary md:text-[2rem]">

@@ -60,8 +60,8 @@ const OverviewStats = () => {
       <div className="section-container">
         <SectionReveal>
           <SectionHeader
-            badge="Dòng tộc Nguyễn"
-            title="Di sản 170 năm"
+            badge="Dòng tộc Lê Văn"
+            title="Di sản 99+ năm"
             subtitle="Từ vùng đất hoang Thăng Bình đến bốn phương, dòng họ Lê Văn trải dài qua nhiều thế hệ với những giá trị bất biến."
           />
         </SectionReveal>
@@ -180,7 +180,7 @@ const LegacyQuoteSection = () => (
             </p>
             <div className="divider-bronze mb-6" />
             <footer className="font-body text-bronze/60 text-xs tracking-[0.3em] uppercase">
-              Bia đá Nhà thờ họ Lê Văn · Thăng Bình, Quảng Nam · 2010
+              Bia đá Nhà thờ tộc Lê Văn · Thăng Bình, Quảng Nam · 2010
             </footer>
           </blockquote>
         </div>

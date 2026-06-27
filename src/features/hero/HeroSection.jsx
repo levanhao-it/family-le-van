@@ -90,7 +90,7 @@ const HeroSection = () => {
             variants={motionVariants.fadeUp}
             className="mb-14 font-body text-sm uppercase tracking-[0.2em] text-muted"
           >
-            {APP_CONFIG.village} · {generationCount} Thế hệ · 170+ Năm
+            {APP_CONFIG.village} · {generationCount} Thế hệ · 100+ Năm
           </motion.p>
 
           {/* CTA Buttons */}
@@ -164,7 +164,7 @@ const HeroSection = () => {
             {[
               { label: 'Thế hệ', value: generationCount },
               { label: 'Thành viên', value: total },
-              { label: 'Năm lịch sử', value: '170+' },
+              { label: 'Năm lịch sử', value: '100+' },
               { label: 'Nghi lễ / năm', value: '12' },
             ].map((stat) => (
               <div key={stat.label} className="py-4 px-6 text-center">

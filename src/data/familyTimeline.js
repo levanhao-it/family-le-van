@@ -221,7 +221,7 @@ const rawFamilyTimeline = [
     era: 'Kỷ nguyên số',
     location: 'Toàn cầu — Online',
     description:
-      'Dòng họ Lê Văn tại Thăng Bình chính thức ra mắt nền tảng website gia phả số hóa đầu tiên. Hệ thống lưu trữ toàn bộ lịch sử, hình ảnh, nghi lễ và ký ức của dòng họ qua hơn 170 năm.',
+      'Dòng họ Lê Văn tại Thăng Bình chính thức ra mắt nền tảng website gia phả số hóa đầu tiên. Hệ thống lưu trữ toàn bộ lịch sử, hình ảnh, nghi lễ và ký ức của dòng họ qua hơn 100 năm.',
     relatedMembers: ['g4-001', 'g4-007'],
     images: [],
     documents: [],

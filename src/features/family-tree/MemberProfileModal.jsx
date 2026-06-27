@@ -178,27 +178,6 @@ const MemberProfileModal = () => {
 
                 {/* Header */}
                 <div className="flex-shrink-0 px-6 pb-4 pt-5" style={{ borderBottom: '1px solid #E2E8F0' }}>
-                  <div className="mb-4 flex items-center justify-between gap-3">
-                    <div>
-                      <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: '#94A3B8' }}>
-                        Side sheet hồ sơ
-                      </p>
-                      <p className="mt-1 font-body text-xs leading-relaxed" style={{ color: '#64748B' }}>
-                        Canvas vẫn mở để bạn tiếp tục rê và chọn node khác.
-                      </p>
-                    </div>
-                    <button
-                      onClick={clearSelectedMember}
-                      aria-label="Đóng"
-                      className="rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors"
-                      style={{ borderColor: '#E2E8F0', color: '#475569', background: '#F8FAFC' }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = '#EEF2FF'; e.currentTarget.style.borderColor = roleColor; e.currentTarget.style.color = roleColor }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = '#F8FAFC'; e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.color = '#475569' }}
-                    >
-                      Thu sheet
-                    </button>
-                  </div>
-
                   <div className="flex items-start gap-4">
                     {/* Avatar */}
                     <div

@@ -17,7 +17,7 @@ const VIEW_TABS = [
 
 const DISPLAY_MODES = [
   { id: 'default', label: 'Mặc định', desc: 'Đầy đủ filter, compare và motion' },
-  { id: 'elder', label: 'Người lớn tuổi', desc: 'Chữ lớn hơn, ít thao tác, phù hợp trình chiếu họp mặt' },
+  { id: 'elder', label: 'Tối giản', desc: 'Chữ lớn hơn, ít thao tác, phù hợp trình chiếu họp mặt, dành cho người lớn tuổi' },
 ]
 
 const DISPLAY_MODE_QUERY_KEY = 'mode'
@@ -103,30 +103,6 @@ const FamilyTreePage = () => {
                 </button>
               )
             })}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={handlePresentationToggle}
-              className={clsx(
-                'inline-flex items-center gap-3 rounded-full border px-5 py-3 font-body text-sm transition-all duration-200',
-                isPresentationMode
-                  ? 'border-bronze/50 bg-bronze/12 text-primary shadow-[0_16px_40px_rgba(0,0,0,0.12)]'
-                  : 'border-ivory/10 text-secondary hover:border-bronze/20 hover:text-primary'
-              )}
-            >
-              <span>{isPresentationMode ? 'Thoát trình chiếu họp mặt' : 'Trình chiếu họp mặt'}</span>
-              {isPresentationMode && (
-                <span className="rounded-full bg-bronze/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-bronze">
-                  Đang bật
-                </span>
-              )}
-            </button>
-
-            <p className="font-body text-xs leading-relaxed text-faint">
-              Mở thẳng bằng liên kết <span className="font-semibold text-secondary">?mode=elder</span> để vào ngay chế độ chữ lớn.
-            </p>
           </div>
 
           {viewMode === 'tree' && (

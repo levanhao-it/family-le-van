@@ -196,8 +196,8 @@ export function getRelationship(id1, id2, members) {
     const sibType = both
       ? 'ruột'
       : sameFather
-      ? 'cùng cha khác mẹ'
-      : 'cùng mẹ khác cha'
+        ? 'cùng cha khác mẹ'
+        : 'cùng mẹ khác cha'
 
     const m1older = isOlderThan(m1, m2)
     const olderM = m1older ? m1 : m2

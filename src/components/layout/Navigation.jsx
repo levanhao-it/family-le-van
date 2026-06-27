@@ -78,16 +78,25 @@ const Navigation = () => {
   const isActive = (path) => location.pathname === path
   const isExploreActive = EXPLORE_NAV_ITEMS.some((item) => isActive(item.path))
 
+  const normalizeSearchText = (text) =>
+    text
+      .toString()
+      .normalize('NFD') // Tách dấu khỏi ký tự
+      .replace(/[\u0300-\u036f]/g, '') // Xóa các ký tự dấu vừa tách
+      .replace(/đ/g, 'd') // Xử lý riêng chữ đ
+      .replace(/Đ/g, 'D') // Xử lý riêng chữ Đ
+      .toLowerCase()
+
   const memberMatches = useMemo(() => {
-    const query = memberQuery.trim().toLowerCase()
+    const query = normalizeSearchText(memberQuery.trim())
     if (!query) return []
 
     return members
       .filter((member) => {
-        const fields = [member.fullName, member.nickname, member.location]
+        const fields = normalizeSearchText([member.fullName, member.nickname, member.location]
           .filter(Boolean)
           .join(' ')
-          .toLowerCase()
+          .toLowerCase())
         return fields.includes(query)
       })
       .sort((a, b) => {
@@ -136,9 +145,6 @@ const Navigation = () => {
           <div className={clsx('px-4 py-3 border-b', isDark ? 'border-bronze/10' : 'border-bronze/15')}>
             <p className="font-display text-[11px] tracking-[0.28em] uppercase text-bronze/70">
               Tìm thành viên
-            </p>
-            <p className="mt-1 text-xs text-faint">
-              Enter để mở kết quả đầu tiên hoặc chọn trực tiếp trong danh sách.
             </p>
           </div>
 
@@ -312,9 +318,6 @@ const Navigation = () => {
                       <p className="font-display text-[11px] tracking-[0.32em] uppercase text-bronze/70">
                         Khám phá chuyên mục
                       </p>
-                      <p className="mt-1 text-sm text-muted">
-                        Gom các trang phụ vào một cụm điều hướng gọn hơn, vẫn đi nhanh tới đúng nội dung.
-                      </p>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2 p-3">
@@ -410,7 +413,7 @@ const Navigation = () => {
               </div>
               <nav className="flex-1 px-4 py-6 overflow-y-auto">
                 <div ref={mobileSearchRef} className="relative mb-8">
-                  <p className="mb-3 font-display text-[11px] tracking-[0.28em] uppercase text-bronze/65">
+                  <p className="mb-3 font-display text-[11px] tracking-[0.28em] uppercase">
                     Tìm nhanh thành viên
                   </p>
                   <div
@@ -451,7 +454,7 @@ const Navigation = () => {
                 </div>
 
                 <div className="mb-8">
-                  <p className="mb-3 font-display text-[11px] tracking-[0.28em] uppercase text-bronze/65">
+                  <p className="mb-3 font-display text-[11px] tracking-[0.28em] uppercase">
                     Mục chính
                   </p>
                   {PRIMARY_NAV_ITEMS.map((item, index) => (
@@ -480,7 +483,7 @@ const Navigation = () => {
 
                 <div>
                   <div className="mb-3 flex items-center justify-between">
-                    <p className="font-display text-[11px] tracking-[0.28em] uppercase text-bronze/65">
+                    <p className="font-display text-[11px] tracking-[0.28em] uppercase">
                       Khám phá
                     </p>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-subtle">

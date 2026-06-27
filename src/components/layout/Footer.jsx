@@ -17,7 +17,7 @@ const FooterNavSection = ({ title, description, items, showSummary = false }) =>
       {title}
     </h4>
     <p className="mb-6 text-xs leading-relaxed text-faint">
-      {description}
+      {/* {description} */}
     </p>
     <ul className="space-y-3">
       {items.map((item) => (
@@ -109,7 +109,7 @@ const Footer = () => {
               Di sản
             </h4>
             <p className="mb-6 text-xs leading-relaxed text-faint">
-              Giữ một điểm neo cảm xúc ở cuối trang, sau lớp điều hướng và tra cứu nhanh phía trên.
+              {/* Giữ một điểm neo cảm xúc ở cuối trang, sau lớp điều hướng và tra cứu nhanh phía trên. */}
             </p>
             <blockquote className="border-l-2 border-bronze/30 pl-4">
               <p className="font-heading text-secondary italic text-sm leading-relaxed">
@@ -145,15 +145,6 @@ const Footer = () => {
             </div>
 
             <div className="divider-bronze md:hidden" />
-
-            <div className="max-w-xl text-center md:text-right">
-              <p className="font-display text-[10px] tracking-[0.28em] uppercase text-bronze/58">
-                Điều hướng mới
-              </p>
-              <p className="mt-2 font-body text-xs leading-relaxed text-subtle">
-                Đi từ Mục chính, mở rộng bằng Khám phá, hoặc nhảy nhanh tới từng thành viên trên cây gia phả.
-              </p>
-            </div>
           </div>
         </motion.div>
       </div>

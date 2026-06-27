@@ -55,16 +55,16 @@ const rawGalleryImages = [
   // ==================== NHÓM: HỌP MẶT ====================
   {
     id: 'gal-004',
-    title: 'Đại hội họ 1985 — Lần đầu tiên đoàn tụ',
-    description: 'Bức ảnh lịch sử đầu tiên của đại hội dòng họ sau năm thống nhất. Hơn 100 người về tụ họp.',
+    title: 'Tết 2022 (Nhâm Dần) — Họp mặt đầu năm',
+    description: 'Bức ảnh ghi lại khoảnh khắc đoàn tụ đầu năm Nhâm Dần 2022, khi con cháu từ nhiều nơi trở về nhà nội thực hiện nghi lễ đầu năm.',
     category: 'reunion',
     categoryLabel: 'Họp mặt',
-    year: 1985,
-    photographer: 'Không rõ',
-    location: 'Thăng Bình, Quảng Nam',
+    year: 2022,
+    photographer: 'Lê Văn Hào',
+    location: 'Khu Phố Phước Lộc, Phường Phước Long, Tỉnh Đồng Nai',
     relatedMembers: ['g3-001', 'g3-002', 'g3-005', 'g4-001'],
-    tags: ['họp mặt', '1985', 'đoàn tụ', 'lịch sử'],
-    url: null,
+    tags: ['họp mặt', '2022', 'đoàn tụ', 'lịch sử'],
+    url: 'https://scontent.fsgn1-1.fna.fbcdn.net/v/t39.30808-6/474996508_1162189702169709_7545325244813267124_n.jpg?stp=dst-jpg_tt6&cstp=mx1280x960&ctp=s1280x960&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHulVoL2g6_xjNf37Inu4YZ-cjHlab4tsv5yMeVpvi2y0PstZiKC9vyUQ7vclxmKs-6ljpqFIiB2ZzPjdDfao9i&_nc_ohc=Oi0FJe3XdR4Q7kNvwHeg0-e&_nc_oc=AdoADDacPeARXZhBegA3z70xQC5ksoRrHRZy34YJQvTbPOWQE4wSMyZSWAkOyuxopgc&_nc_zt=23&_nc_ht=scontent.fsgn1-1.fna&_nc_gid=d9hSNjeH9NBnUDBuS46qyw&_nc_ss=7b2a8&oh=00_Af_eCc-jvE4CzWtqIkO4YYjVM2qMGd2-HoWBrONt451DLA&oe=6A4576A5',
     thumbnail: null,
     isFeature: true,
   },
@@ -232,14 +232,13 @@ const galleryArchiveMeta = {
     },
   },
   'gal-004': {
-    timeLabel: 'Dip Tet At Suu 1985, buoi doan tu dau tien sau thong nhat',
+    timeLabel: 'Tết 2022 (Nhâm Dần) — Họp mặt đầu năm',
     sourceRefs: [
-      { label: 'Ban scan anh giay dai hoi 1985', holder: 'Tu lieu gia dinh chi Sy' },
-      { label: 'So ghi chep hop toc nam 1985', holder: 'Ban truong toc' },
+      { label: '', holder: 'Lê Văn Hào' },
     ],
     verification: {
       status: 'partial',
-      note: 'Nien diem va boi canh da doi chieu qua so hop toc; danh sach nhan vat trong anh van dang tiep tuc gan ten day du.',
+      note: '',
     },
   },
   'gal-005': {
