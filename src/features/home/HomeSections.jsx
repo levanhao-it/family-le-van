@@ -100,7 +100,7 @@ const OverviewStats = () => {
 const FeaturedMembersSection = () => {
   const members = useMembersStore((s) => s.members)
   const featured = members.filter(
-    (m) => m.role === 'patriarch' || m.role === 'merit'
+    (m) => m.role === 'patriarch' || m.role === 'matriarch' || m.role === 'merit' || m.role === 'elder'
   ).slice(0, 4)
 
   return (

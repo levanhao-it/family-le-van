@@ -6,7 +6,7 @@ export const legacyQuotes = [
   {
     id: 'lq-001',
     quote: 'Đất đai là máu thịt, là cội rễ của dòng họ.',
-    author: 'Cụ Nguyễn Phúc Thành',
+    author: 'Cụ Lê Tiệm',
     role: 'Thủy tổ',
     year: '~1890',
     category: 'philosophy',

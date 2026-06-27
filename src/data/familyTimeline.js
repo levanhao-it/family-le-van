@@ -15,11 +15,11 @@ const rawFamilyTimeline = [
     era: 'Thời Tự Đức',
     location: 'Làng Thăng Bình, Quảng Nam',
     description:
-      'Cụ Nguyễn Phúc Thành rời quê hương cũ ở Huế, dẫn theo gia quyến vào khai khẩn vùng đất hoang tại Thăng Bình, Quảng Nam. Với đôi bàn tay và ý chí sắt đá, cụ đã biến vùng đất hoang vu thành những thửa ruộng màu mỡ.',
+      'Cụ Lê Tiệm rời quê hương cũ ở Huế, dẫn theo gia quyến vào khai khẩn vùng đất hoang tại Thăng Bình, Quảng Nam. Với đôi bàn tay và ý chí sắt đá, cụ đã biến vùng đất hoang vu thành những thửa ruộng màu mỡ.',
     relatedMembers: ['g1-001', 'g1-002'],
     images: [],
     documents: [],
-    quotes: ['Đất đai là máu thịt, là cội rễ của dòng họ — Cụ Nguyễn Phúc Thành'],
+    quotes: ['Đất đai là máu thịt, là cội rễ của dòng họ — Cụ Lê Tiệm'],
     tags: ['khai hoang', 'lập làng', 'thủy tổ', 'Quảng Nam'],
     importance: 5,
   },
@@ -33,7 +33,7 @@ const rawFamilyTimeline = [
     era: 'Thời Thành Thái',
     location: 'Thăng Bình, Quảng Nam',
     description:
-      'Sau 40 năm gây dựng cơ nghiệp, cụ Nguyễn Phúc Thành đã tích lũy đủ để xây dựng nhà thờ họ đầu tiên. Ngôi nhà thờ được làm bằng gỗ quý, mang kiến trúc truyền thống Việt Nam với mái ngói đỏ và cột gỗ chạm trổ tinh xảo.',
+      'Sau 40 năm gây dựng cơ nghiệp, cụ Lê Tiệm đã tích lũy đủ để xây dựng nhà thờ họ đầu tiên. Ngôi nhà thờ được làm bằng gỗ quý, mang kiến trúc truyền thống Việt Nam với mái ngói đỏ và cột gỗ chạm trổ tinh xảo.',
     relatedMembers: ['g1-001', 'g1-002'],
     images: [],
     documents: [],

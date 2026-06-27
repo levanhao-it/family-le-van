@@ -7,7 +7,7 @@ export const ritualEvents = [
   {
     id: 're-001',
     type: 'ancestor_anniversary',
-    title: 'Giỗ Tổ Thủy tổ Nguyễn Phúc Thành',
+    title: 'Giỗ Tổ Thủy tổ Lê Tiệm',
     lunarDate: { day: 20, month: 7 },
     solarDate: null, // Computed from lunar
     recurrence: 'yearly',
@@ -30,7 +30,7 @@ export const ritualEvents = [
   {
     id: 're-002',
     type: 'ancestor_anniversary',
-    title: 'Giỗ cụ bà Thủy tổ Trần Thị Lan',
+    title: 'Giỗ cụ bà Thủy tổ Trần Thị Tư',
     lunarDate: { day: 15, month: 2 },
     solarDate: null,
     recurrence: 'yearly',

@@ -50,7 +50,7 @@ const PALETTE = [
 const SPIN_DURATION = 4500
 const MIN_SPINS = 6
 
-const BRANCH_LABEL = { main: 'Chi chính' }
+const BRANCH_LABEL = { 'sy': 'Chi Sỹ', 'nhut': 'Chi Nhứt', 'ly': 'Chi Lý', 'thong': 'Chi Thông' }
 
 // Canvas-based firework confetti (no external lib)
 const useFireworks = () => {
@@ -302,7 +302,7 @@ const LuckyWheel = () => {
             <div className="flex flex-wrap gap-1.5">
               <FilterPill active={filter.generation === 'all'} onClick={() => handleFilterChange('generation', 'all')} T={T}>Tất cả</FilterPill>
               {filterOptions.generations.map((g) => (
-                <FilterPill key={g} active={filter.generation === g} onClick={() => handleFilterChange('generation', g)} T={T}>TH {g}</FilterPill>
+                <FilterPill key={g} active={filter.generation === g} onClick={() => handleFilterChange('generation', g)} T={T}>Thế Hệ {g}</FilterPill>
               ))}
             </div>
           </div>
@@ -503,7 +503,6 @@ const LuckyWheel = () => {
                 style={{
                   background: spinning ? 'rgba(214,185,140,0.05)' : 'rgba(214,185,140,0.12)',
                   border: '1px solid rgba(214,185,140,0.4)',
-                  color: '#D6B98C',
                   boxShadow: spinning ? 'none' : '0 0 24px rgba(214,185,140,0.15)',
                 }}
               >{spinLabel}</motion.button>
