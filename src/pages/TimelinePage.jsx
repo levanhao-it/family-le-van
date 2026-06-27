@@ -14,9 +14,6 @@ const TimelinePage = () => {
       >
         <div className="badge-bronze inline-flex mb-3">Lịch sử</div>
         <h1 className="mb-2 font-display text-display text-primary">Kho tư liệu lịch sử</h1>
-        <p className="max-w-lg font-body text-sm text-secondary">
-          Mỗi mốc sự kiện được biên mục như một hồ sơ lịch sử, có nhân vật liên quan, địa điểm, mốc thời gian, nguồn đối chiếu và ghi chú xác minh.
-        </p>
       </motion.div>
       <FamilyTimeline />
     </div>

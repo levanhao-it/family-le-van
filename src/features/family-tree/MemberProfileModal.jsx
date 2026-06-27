@@ -40,6 +40,7 @@ const FamilyTab = ({ member, liveMembers }) => {
   const mother = member.motherId ? getLiveMemberById(member.motherId) : null
   const spouses = member.spouseIds?.map((id) => getLiveMemberById(id)).filter(Boolean) || []
   const children = member.childrenIds?.map((id) => getLiveMemberById(id)).filter(Boolean) || []
+  const brothersAndSisters = member.siblingIds?.map((id) => getLiveMemberById(id)).filter(Boolean) || []
 
   const handleFlyTo = (m) => {
     setSelectedMember(m)
@@ -91,7 +92,7 @@ const FamilyTab = ({ member, liveMembers }) => {
       <FamilyRow label="Mẹ" members={mother ? [mother] : []} />
       <FamilyRow label="Vợ / Chồng" members={spouses} />
       <FamilyRow label="Con cái" members={children} />
-      <p style={{ fontSize: 10, color: '#94A3B8', marginTop: 12 }}>↗ Click tên để bay đến vị trí trên cây</p>
+      <FamilyRow label="Anh chị em" members={brothersAndSisters} />
     </div>
   )
 }

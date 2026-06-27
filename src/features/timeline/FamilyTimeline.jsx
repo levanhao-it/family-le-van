@@ -278,13 +278,6 @@ const FamilyTimeline = () => {
   return (
     <section className="py-12">
       <div className="section-container">
-        <div className="mb-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          <ArchiveSummaryCard label="Mốc tư liệu" value={archiveSummary.total} hint="Sự kiện đang được lưu trong niên biểu" />
-          <ArchiveSummaryCard label="Đủ 5 lớp metadata" value={archiveSummary.catalogedCount} hint="Có nhân vật, nơi chốn, thời gian, nguồn và ghi chú" />
-          <ArchiveSummaryCard label="Đã kiểm chứng" value={archiveSummary.verifiedCount} hint="Mốc có chứng cứ đối chiếu mạnh" />
-          <ArchiveSummaryCard label="Hồ sơ văn bản" value={archiveSummary.documentCount} hint="Biên bản, danh sách, văn bản kèm theo" />
-        </div>
-
         {/* Vertical line */}
         <div className="relative">
           <div

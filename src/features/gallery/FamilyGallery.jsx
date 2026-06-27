@@ -291,13 +291,6 @@ const FamilyGallery = () => {
         ))}
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        <ArchiveSummaryCard label="Hồ sơ hiển thị" value={archiveSummary.total} hint="Ảnh trong bộ lọc hiện tại" />
-        <ArchiveSummaryCard label="Đủ 5 lớp metadata" value={archiveSummary.catalogedCount} hint="Có nhân vật, nơi chốn, thời gian, nguồn và ghi chú" />
-        <ArchiveSummaryCard label="Đã kiểm chứng" value={archiveSummary.verifiedCount} hint="Ảnh có độ tin cậy cao" />
-        <ArchiveSummaryCard label="Nguồn đối chiếu" value={archiveSummary.sourceCount} hint="Tổng đầu mục nguồn đang được trích dẫn" />
-      </div>
-
       {/* Masonry-like grid */}
       <motion.div
         key={activeCategory}

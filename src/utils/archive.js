@@ -1,25 +1,25 @@
 const VERIFICATION_META = {
   verified: {
-    label: 'Da kiem chung',
+    label: 'Đã kiểm chứng',
     color: '#86EFAC',
   },
   partial: {
-    label: 'Doi chieu mot phan',
+    label: 'Đối chiếu một phần',
     color: '#FCD34D',
   },
   oral: {
-    label: 'Tu lieu truyen khau',
+    label: 'Tài liệu truyền khẩu',
     color: '#F9A8D4',
   },
   draft: {
-    label: 'Cho bo sung nguon',
+    label: 'Chờ bổ sung nguồn',
     color: '#94A3B8',
   },
 }
 
 const DEFAULT_VERIFICATION = {
   status: 'draft',
-  note: 'Chua bo sung ghi chu kiem chung cho ho so nay.',
+  note: 'Chưa bổ sung ghi chú kiểm chứng cho hồ sơ này.',
 }
 
 const normalizeText = (value) =>
@@ -64,11 +64,11 @@ export const buildArchiveRecord = ({
 } = {}) => ({
   people: dedupeStrings(relatedMembers),
   location: {
-    label: normalizeText(location) || 'Chua xac dinh dia diem',
+    label: normalizeText(location) || 'Chưa xác định địa điểm',
     note: normalizeText(locationNote) || null,
   },
   timeframe: {
-    label: normalizeText(timeLabel) || 'Chua xac dinh thoi diem',
+    label: normalizeText(timeLabel) || 'Chưa xác định thời điểm',
   },
   sources: sourceRefs.map(normalizeSourceRef).filter(Boolean),
   evidence: {

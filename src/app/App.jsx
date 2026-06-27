@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { HeroUIProvider } from '@heroui/react'
 import AppRouter from './router'
 import AppErrorBoundary from '@/components/common/AppErrorBoundary'
+import BackgroundAudio from '@/components/common/BackgroundAudio'
 import { useAppStore } from '@/stores/appStore'
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
 	return (
 		<HeroUIProvider>
 			<AppErrorBoundary>
+				<BackgroundAudio />
 				<AppRouter />
 			</AppErrorBoundary>
 		</HeroUIProvider>

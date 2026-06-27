@@ -14,10 +14,6 @@ const GalleryPage = () => {
       title="Kho tư liệu hình ảnh"
       description="Kho ảnh được tổ chức như một lớp lưu trữ sống: mỗi khung hình giữ lại nhân vật, địa điểm, mốc thời gian và trạng thái kiểm chứng để tra cứu theo đúng ngữ cảnh gia tộc."
       stats={[
-        { label: 'Tư liệu', value: archiveSummary.total, detail: 'ảnh và hồ sơ đang lưu' },
-        { label: 'Hồ sơ hoàn chỉnh', value: archiveSummary.catalogedCount, detail: 'đã đủ người, nơi, thời điểm và nguồn' },
-        { label: 'Đã kiểm chứng', value: archiveSummary.verifiedCount, detail: 'được đối chiếu qua tư liệu nguồn' },
-        { label: 'Liên kết nhân vật', value: archiveSummary.peopleLinkedCount, detail: 'ảnh đã gắn ít nhất một thành viên' },
       ]}
       action={<PageShellAction to={ROUTES.TEMPLE}>Mở nhà thờ họ</PageShellAction>}
       contentClassName="section-container py-10"
