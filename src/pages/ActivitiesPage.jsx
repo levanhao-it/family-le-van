@@ -33,8 +33,8 @@ const ActivitiesPage = () => {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-6 py-3 text-sm font-body tracking-wide border-b-2 -mb-px transition-all duration-200 ${activeTab === tab.id
-                  ? 'text-bronze border-bronze'
-                  : 'border-transparent text-muted hover-text-secondary'
+                ? 'text-bronze border-bronze'
+                : 'border-transparent text-muted hover-text-secondary'
                 }`}
             >
               {tab.label}

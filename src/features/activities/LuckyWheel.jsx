@@ -394,7 +394,7 @@ const LuckyWheel = () => {
           {/* Left: wheel + button + result */}
           <div className="flex flex-col items-center gap-6">
             {/* Wheel container */}
-            <div className="relative" style={{ width: 520, height: 520 }}>
+            <div className="relative" style={{ width: 400, height: 400 }}>
               {/* Pointer */}
               <div className="absolute left-1/2 -translate-x-1/2 z-20" style={{ top: -18 }}>
                 <div
@@ -419,7 +419,7 @@ const LuckyWheel = () => {
                 }}
               />
               {/* SVG Wheel */}
-              <motion.svg width={520} height={520} viewBox="0 0 520 520" style={{ rotate: rotationMV }}>
+              <motion.svg width={400} height={400} viewBox="0 0 520 520" style={{ rotate: rotationMV }}>
                 <defs>
                   <filter id="seg-glow" x="-30%" y="-30%" width="160%" height="160%">
                     <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
@@ -467,8 +467,8 @@ const LuckyWheel = () => {
                     </g>
                   )
                 })}
-                <circle cx={260} cy={260} r={44} fill="#1F1A17" stroke="rgba(214,185,140,0.35)" strokeWidth={2} />
-                <text x={260} y={265} textAnchor="middle" fill="#D6B98C" fontSize={13} fontFamily="Cinzel, serif" fontWeight={600}>SPIN</text>
+                <circle cx={260} cy={260} r={44} fill="#1F1A17" stroke="rgba(214,185,140,0.35)" strokeWidth={2} cursor={"pointer"} onClick={spin} />
+                <text x={260} y={265} textAnchor="middle" fill="#D6B98C" fontSize={13} fontFamily="Cinzel, serif" fontWeight={600} cursor={"pointer"} onClick={spin} >SPIN</text>
               </motion.svg>
             </div>
 
