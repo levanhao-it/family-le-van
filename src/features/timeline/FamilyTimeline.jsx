@@ -21,14 +21,14 @@ const getEventConfig = (type) =>
 
 const ArchiveSection = ({ label, children, className = '' }) => (
   <div className={clsx('rounded-xl border border-bronze/10 bg-black/20 p-3', className)}>
-    <p className="text-[10px] font-body uppercase tracking-[0.24em] text-bronze/45">{label}</p>
+    <p className="text-[10px] font-body uppercase tracking-[0.24em]">{label}</p>
     <div className="mt-2 text-xs leading-relaxed text-secondary">{children}</div>
   </div>
 )
 
 const ArchiveSummaryCard = ({ label, value, hint }) => (
   <div className="rounded-2xl border border-bronze/12 bg-black/20 px-4 py-3">
-    <p className="text-[10px] font-body uppercase tracking-[0.24em] text-bronze/45">{label}</p>
+    <p className="text-[10px] font-body uppercase tracking-[0.24em]">{label}</p>
     <p className="mt-2 font-display text-2xl text-primary">{value}</p>
     <p className="mt-1 text-xs text-muted">{hint}</p>
   </div>
@@ -94,19 +94,19 @@ const TimelineEventCard = ({ event, side }) => {
         <div className="flex flex-wrap gap-x-4 gap-y-1 mb-3">
           {event.date && (
             <div className="flex items-center gap-1 font-body text-xs text-muted">
-              <HiCalendar size={10} className="text-bronze/40" />
+              <HiCalendar size={10} className="" />
               <span>{event.date.split('-')[0]}</span>
             </div>
           )}
           {archive.location?.label && (
             <div className="flex items-center gap-1 font-body text-xs text-muted">
-              <HiLocationMarker size={10} className="text-bronze/40" />
+              <HiLocationMarker size={10} className="" />
               <span>{archive.location.label}</span>
             </div>
           )}
           {event.relatedMemberRefs?.length > 0 && (
             <div className="flex items-center gap-1 font-body text-xs text-muted">
-              <HiUsers size={10} className="text-bronze/40" />
+              <HiUsers size={10} className="" />
               <span>{event.relatedMemberRefs.length} người liên quan</span>
             </div>
           )}
@@ -137,11 +137,11 @@ const TimelineEventCard = ({ event, side }) => {
               )}
 
               <div className="grid gap-3 sm:grid-cols-2">
-                <ArchiveSection label="Moc thoi gian">
+                <ArchiveSection label="Mốc thời gian">
                   <p>{archive.timeframe.label}</p>
                 </ArchiveSection>
 
-                <ArchiveSection label="Dia diem">
+                <ArchiveSection label="Địa điểm">
                   <p>{archive.location.label}</p>
                   {archive.location.note && (
                     <p className="mt-1 text-[11px] text-muted">{archive.location.note}</p>
@@ -158,11 +158,11 @@ const TimelineEventCard = ({ event, side }) => {
                       ))}
                     </div>
                   ) : (
-                    <span className="text-muted">Chua ghi nhan nhan vat lien quan.</span>
+                    <span className="text-muted">Chưa ghi nhận nhân vật liên quan.</span>
                   )}
                 </ArchiveSection>
 
-                <ArchiveSection label="Nguon tu lieu" className="sm:col-span-2">
+                <ArchiveSection label="Nguồn tài liệu" className="sm:col-span-2">
                   {archive.sources.length ? (
                     <ul className="space-y-2">
                       {archive.sources.map((source, index) => (
@@ -172,12 +172,12 @@ const TimelineEventCard = ({ event, side }) => {
                       ))}
                     </ul>
                   ) : (
-                    <span className="text-muted">Chua bo sung nguon doi chieu cho su kien nay.</span>
+                    <span className="text-muted">Chưa bổ sung nguồn đối chiếu cho sự kiện này.</span>
                   )}
                 </ArchiveSection>
 
                 {archive.evidence.documents.length > 0 && (
-                  <ArchiveSection label="Van ban / ho so lien doi" className="sm:col-span-2">
+                  <ArchiveSection label="Văn bản / hồ sơ liên quan" className="sm:col-span-2">
                     <ul className="space-y-1.5 text-secondary">
                       {archive.evidence.documents.map((document, index) => (
                         <li key={`${event.id}-document-${index}`}>• {document}</li>
@@ -186,7 +186,7 @@ const TimelineEventCard = ({ event, side }) => {
                   </ArchiveSection>
                 )}
 
-                <ArchiveSection label="Ghi chu kiem chung" className="sm:col-span-2">
+                <ArchiveSection label="Ghi chú kiểm chứng" className="sm:col-span-2">
                   <p>{archive.verification.note}</p>
                 </ArchiveSection>
               </div>

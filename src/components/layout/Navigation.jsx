@@ -144,7 +144,7 @@ const Navigation = () => {
         >
           <div className={clsx('px-4 py-3 border-b', isDark ? 'border-bronze/10' : 'border-bronze/15')}>
             <p className="font-display text-[11px] tracking-[0.28em] uppercase text-bronze/70">
-              Tìm thành viên
+              Kết quả tìm kiếm
             </p>
           </div>
 
@@ -265,7 +265,7 @@ const Navigation = () => {
                   onFocus={() => setMemberResultsOpen(Boolean(memberQuery.trim()))}
                   onKeyDown={handleMemberSearchKeyDown}
                   type="search"
-                  placeholder="Tìm nhanh thành viên để mở trên cây..."
+                  placeholder="Tìm kiếm..."
                   className="w-full bg-transparent text-sm text-primary outline-none placeholder:text-current placeholder:opacity-40"
                 />
                 {memberQuery && (
@@ -315,7 +315,7 @@ const Navigation = () => {
                     )}
                   >
                     <div className={clsx('px-5 py-4 border-b', isDark ? 'border-bronze/10' : 'border-bronze/15')}>
-                      <p className="font-display text-[11px] tracking-[0.32em] uppercase text-bronze/70">
+                      <p className="font-display text-[11px] tracking-[0.32em] uppercase">
                         Khám phá chuyên mục
                       </p>
                     </div>
@@ -414,7 +414,7 @@ const Navigation = () => {
               <nav className="flex-1 px-4 py-6 overflow-y-auto">
                 <div ref={mobileSearchRef} className="relative mb-8">
                   <p className="mb-3 font-display text-[11px] tracking-[0.28em] uppercase">
-                    Tìm nhanh thành viên
+                    Tìm kiếm
                   </p>
                   <div
                     className={clsx(
