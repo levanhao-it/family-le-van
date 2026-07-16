@@ -12,6 +12,7 @@ export const APP_CONFIG = {
 export const ROUTES = {
   HOME: '/',
   TREE: '/gia-pha',
+  BOOK: '/sach-gia-pha',
   TIMELINE: '/lich-su',
   CALENDAR: '/nghi-le',
   ACTIVITIES: '/hoat-dong',

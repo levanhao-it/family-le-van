@@ -35,7 +35,7 @@ const ArchiveSummaryCard = ({ label, value, hint }) => (
 )
 
 // ---- Timeline Event Card ----
-const TimelineEventCard = ({ event, side }) => {
+const TimelineEventCard = ({ event, side, mobile = false }) => {
   const [ref, inView] = useInView({ ...scrollConfig.viewport, triggerOnce: true })
   const [expanded, setExpanded] = useState(false)
   const config = getEventConfig(event.type)
@@ -45,13 +45,16 @@ const TimelineEventCard = ({ event, side }) => {
   return (
     <motion.div
       ref={ref}
-      variants={side === 'left' ? motionVariants.slideLeft : motionVariants.slideRight}
+      variants={mobile ? motionVariants.fadeUp : (side === 'left' ? motionVariants.slideLeft : motionVariants.slideRight)}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      className={clsx('relative flex', side === 'left' ? 'justify-end pr-8 lg:pr-12' : 'justify-start pl-8 lg:pl-12')}
+      className={mobile ? 'w-full' : clsx('relative flex', side === 'left' ? 'justify-end pr-8 lg:pr-12' : 'justify-start pl-8 lg:pl-12')}
     >
       <div
-        className="glass-card rounded-xl p-5 w-full max-w-sm lg:max-w-md cursor-pointer hover:border-bronze/40 transition-all duration-300"
+        className={clsx(
+          'glass-card rounded-xl cursor-pointer hover:border-bronze/40 transition-all duration-300 w-full',
+          mobile ? 'p-4' : 'max-w-sm p-5 lg:max-w-md'
+        )}
         onClick={() => setExpanded(!expanded)}
       >
         {/* Type badge row */}
@@ -278,32 +281,44 @@ const FamilyTimeline = () => {
   return (
     <section className="py-12">
       <div className="section-container">
-        {/* Vertical line */}
-        <div className="relative">
+        {/* ── Mobile layout: single column, line on the left ── */}
+        <div className="relative block md:hidden pl-10">
+          <div
+            className="absolute left-4 top-0 bottom-0 w-px"
+            style={{ background: 'linear-gradient(180deg, transparent, rgba(214,185,140,0.3) 10%, rgba(214,185,140,0.3) 90%, transparent)' }}
+          />
+          <div className="space-y-5">
+            {sorted.map((event) => {
+              const config = getEventConfig(event.type)
+              return (
+                <div key={event.id} className="relative">
+                  {/* Dot on the line */}
+                  <div
+                    className="absolute -left-[22px] top-4 z-10 h-4 w-4 rounded-full"
+                    style={{ background: config.color, boxShadow: `0 0 8px ${config.color}55` }}
+                  />
+                  <TimelineEventCard event={event} side="right" mobile />
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* ── Desktop layout: two-column alternating, center line ── */}
+        <div className="relative hidden md:block">
           <div
             className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
             style={{ background: 'linear-gradient(180deg, transparent, rgba(214,185,140,0.3) 10%, rgba(214,185,140,0.3) 90%, transparent)' }}
           />
-
-          {/* Events */}
           <div className="space-y-16">
             {sorted.map((event, i) => (
               <div key={event.id} className="relative grid grid-cols-2 gap-0 items-center">
-                {/* Left column */}
                 <div>
-                  {i % 2 === 0 ? (
-                    <TimelineEventCard event={event} side="left" />
-                  ) : null}
+                  {i % 2 === 0 ? <TimelineEventCard event={event} side="left" /> : null}
                 </div>
-
-                {/* Center dot */}
                 <TimelineDot event={event} index={i} />
-
-                {/* Right column */}
                 <div>
-                  {i % 2 !== 0 ? (
-                    <TimelineEventCard event={event} side="right" />
-                  ) : null}
+                  {i % 2 !== 0 ? <TimelineEventCard event={event} side="right" /> : null}
                 </div>
               </div>
             ))}

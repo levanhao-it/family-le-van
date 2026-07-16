@@ -14,6 +14,7 @@ const GalleryPage = lazy(() => import('@/pages/GalleryPage'))
 const TemplePage = lazy(() => import('@/pages/TemplePage'))
 const MapPage = lazy(() => import('@/pages/MapPage'))
 const StatisticsPage = lazy(() => import('@/pages/StatisticsPage'))
+const FamilyBookPage = lazy(() => import('@/pages/FamilyBookPage'))
 
 // Cinematic loading fallback
 const PageLoader = () => (
@@ -105,6 +106,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <StatisticsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'sach-gia-pha',
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <FamilyBookPage />
           </Suspense>
         ),
       },

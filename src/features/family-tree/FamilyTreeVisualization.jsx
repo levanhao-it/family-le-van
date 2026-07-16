@@ -613,21 +613,22 @@ const FamilyTreeVisualization = ({ displayMode = 'default' }) => {
     if (compareMode) toggleCompareMode()
   }, [compareMode, inspectorTab, isElderMode, toggleCompareMode])
 
-  // Fly camera to a member node when zoomToMemberId is set
+  // Fly camera to a member node when zoomToMemberId is set.
+  // `nodes` is included in deps so the effect retries after ReactFlow finishes
+  // loading nodes on cross-page navigation (ref/nodes may not be ready on mount).
   useEffect(() => {
     if (!zoomToMemberId || !reactFlowRef.current) return
     const node = reactFlowRef.current.getNode(zoomToMemberId)
-    if (node) {
-      // Node dimensions: width=176, height≈90
-      reactFlowRef.current.setCenter(
-        node.position.x + 88,
-        node.position.y + 45,
-        { zoom: isElderMode ? 1.85 : 1.6, duration: shouldReduceMotion ? 0 : 750 }
-      )
-      setHighlightedId(zoomToMemberId)
-    }
+    if (!node) return
+    // Node dimensions: width=176, height≈90
+    reactFlowRef.current.setCenter(
+      node.position.x + 88,
+      node.position.y + 45,
+      { zoom: isElderMode ? 1.85 : 1.6, duration: shouldReduceMotion ? 0 : 750 }
+    )
+    setHighlightedId(zoomToMemberId)
     clearZoomToMember()
-  }, [zoomToMemberId, clearZoomToMember, isElderMode, shouldReduceMotion])
+  }, [zoomToMemberId, nodes, clearZoomToMember, isElderMode, shouldReduceMotion])
 
   // Sync context-menu highlight trigger (from FamilyNode right-click) into local state
   useEffect(() => {
@@ -1344,67 +1345,66 @@ const FamilyTreeVisualization = ({ displayMode = 'default' }) => {
                   backdropFilter: 'blur(20px)',
                 }}
               >
-                <div style={{ padding: '14px 16px 16px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
-                    <div>
-                      <p style={{ color: '#64748B', fontSize: 10, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: 6 }}>
-                        {isElderMode ? 'Chế độ trình chiếu' : 'Điều hướng nhanh'}
-                      </p>
-                      <p style={{ color: '#F8FAFC', fontSize: isElderMode ? 18 : 15, fontWeight: 700, margin: 0 }}>
-                        {isElderMode ? 'Chỉ giữ lại tìm người, xem nhánh và mở ảnh hồ sơ' : 'Search trước, mở bước sâu hơn khi cần'}
-                      </p>
+                <div style={{ padding: '12px 14px 14px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  {/* Row 1: search + expand toggle */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <div style={{ flex: 1 }}>
+                      <InspectorSearchField
+                        value={search}
+                        onChange={handleSearch}
+                        onClear={() => handleSearch('')}
+                        large={isElderMode}
+                      />
                     </div>
                     <button
                       type="button"
                       onClick={() => setIsInspectorOpen((value) => !value)}
                       style={{
-                        padding: isElderMode ? '9px 12px' : '7px 10px',
+                        flexShrink: 0,
+                        padding: isElderMode ? '10px 14px' : '9px 12px',
                         borderRadius: 999,
-                        background: 'rgba(15,23,42,0.74)',
-                        border: '1px solid rgba(148,163,184,0.2)',
-                        color: '#CBD5E1',
-                        fontSize: isElderMode ? 13 : 11,
+                        background: isInspectorOpen ? 'rgba(56,189,248,0.14)' : 'rgba(15,23,42,0.74)',
+                        border: isInspectorOpen ? '1px solid rgba(56,189,248,0.35)' : '1px solid rgba(148,163,184,0.2)',
+                        color: isInspectorOpen ? '#38BDF8' : '#CBD5E1',
+                        fontSize: isElderMode ? 13 : 12,
                         fontWeight: 700,
                         cursor: 'pointer',
-                        flexShrink: 0,
+                        whiteSpace: 'nowrap',
                       }}
                     >
-                      {isInspectorOpen ? 'Thu gọn' : 'Mở thêm'}
+                      {isInspectorOpen ? 'Thu gọn' : 'Mở rộng'}
                     </button>
                   </div>
 
-                  <InspectorSearchField
-                    value={search}
-                    onChange={handleSearch}
-                    onClear={() => handleSearch('')}
-                    large={isElderMode}
-                  />
-
-                  <div style={{ display: 'grid', gridTemplateColumns: isElderMode ? 'repeat(2, minmax(0, 1fr))' : 'repeat(3, minmax(0, 1fr))', gap: 8 }}>
-                    <MobileQuickAction
-                      icon={HiSearch}
-                      label={isElderMode ? 'Gia phả' : 'Bộ lọc'}
-                      detail={isElderMode ? 'Quay về bước tìm người' : isFiltering ? `${matchCount} khớp` : 'Mở lọc & chú giải'}
-                      tone="#38BDF8"
-                      onClick={() => openInspectorTab('search')}
-                      large={isElderMode}
-                    />
-                    <MobileQuickAction
-                      icon={HiFilter}
-                      label={isElderMode ? 'Nhánh họ' : 'Focus'}
-                      detail={branchFocusActive ? focusLabel : highlightedMember ? highlightedMember.fullName : 'Theo dõi nhánh'}
-                      tone={focusTone}
-                      onClick={() => openInspectorTab('focus')}
-                      large={isElderMode}
-                    />
-                    {!isElderMode && (
-                      <MobileQuickAction
-                        icon={HiSwitchHorizontal}
-                        label="So sánh"
-                        detail={compareMode ? `Đã chọn ${compareSelectionCount}/2` : 'Quan hệ & xưng hô'}
-                        tone="#C084FC"
-                        onClick={() => openInspectorTab('compare')}
+                  {/* Row 2: quick-access tab chips */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                    {availableInspectorTabs.map((tab) => (
+                      <InspectorTabButton
+                        key={tab.id}
+                        tab={tab}
+                        active={activeInspectorTab === tab.id}
+                        badge={inspectorTabBadges[tab.id]}
+                        onClick={() => openInspectorTab(tab.id)}
+                        large={isElderMode}
                       />
+                    ))}
+                    {(isFiltering || pathIds.size > 0) && (
+                      <button
+                        type="button"
+                        onClick={resetAll}
+                        style={{
+                          padding: isElderMode ? '9px 12px' : '7px 10px',
+                          borderRadius: 999,
+                          background: 'rgba(239,68,68,0.1)',
+                          border: '1px solid rgba(239,68,68,0.22)',
+                          color: '#F87171',
+                          fontSize: isElderMode ? 13 : 11,
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                        }}
+                      >
+                        Reset
+                      </button>
                     )}
                   </div>
                 </div>
@@ -1413,25 +1413,15 @@ const FamilyTreeVisualization = ({ displayMode = 'default' }) => {
                   {isInspectorOpen && (
                     <motion.div
                       initial={{ opacity: 0, height: 0, y: 18 }}
-                      animate={{ opacity: 1, height: 'min(72vh, 680px)', y: 0 }}
+                      animate={{ opacity: 1, height: 'min(60vh, 560px)', y: 0 }}
                       exit={{ opacity: 0, height: 0, y: 18 }}
                       transition={{ duration: shouldReduceMotion ? 0 : 0.22 }}
                       style={{ overflow: 'hidden' }}
                     >
-                      <div style={{ padding: '0 16px 16px', overflowY: 'auto', height: '100%' }}>
-                        <div style={{ paddingTop: 2, display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 14 }}>
-                          {availableInspectorTabs.map((tab) => (
-                            <InspectorTabButton
-                              key={tab.id}
-                              tab={tab}
-                              active={activeInspectorTab === tab.id}
-                              badge={inspectorTabBadges[tab.id]}
-                              onClick={() => openInspectorTab(tab.id)}
-                              large={isElderMode}
-                            />
-                          ))}
+                      <div style={{ padding: '0 14px 14px', overflowY: 'auto', height: '100%' }}>
+                        <div style={{ paddingTop: 4 }}>
+                          {activeInspectorContent}
                         </div>
-                        {activeInspectorContent}
                       </div>
                     </motion.div>
                   )}

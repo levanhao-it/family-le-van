@@ -1,23 +1,15 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import FamilyTimeline from '@/features/timeline/FamilyTimeline'
-import { motionVariants } from '@/lib/motion'
+import PageShell from '@/components/common/PageShell'
 
-const TimelinePage = () => {
-  return (
-    <div className="min-h-screen bg-obsidian pt-20">
-      <motion.div
-        variants={motionVariants.fadeUp}
-        initial="hidden"
-        animate="visible"
-        className="section-container py-8 border-b border-bronze/10"
-      >
-        <div className="badge-bronze inline-flex mb-3">Lịch sử</div>
-        <h1 className="mb-2 font-display text-display text-primary">Kho tư liệu lịch sử</h1>
-      </motion.div>
-      <FamilyTimeline />
-    </div>
-  )
-}
+const TimelinePage = () => (
+  <PageShell
+    badge="Lịch sử"
+    title="Kho tư liệu lịch sử"
+    description="Những mốc sự kiện quan trọng được ghi lại theo dòng thời gian — từ buổi khai hoang lập nghiệp đến những đổi thay qua các thế hệ của dòng họ Lê Văn."
+  >
+    <FamilyTimeline />
+  </PageShell>
+)
 
 export default TimelinePage

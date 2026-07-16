@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { clsx } from 'clsx'
 import { useSearchParams } from 'react-router-dom'
-import { HiOutlineCollection, HiOutlineUsers } from 'react-icons/hi'
+import { HiOutlineCollection, HiOutlineUsers, HiBookOpen } from 'react-icons/hi'
 import IconChip from '@/components/common/IconChip'
 import FamilyTreeVisualization from '@/features/family-tree/FamilyTreeVisualization'
 import AncestorChart from '@/features/family-tree/AncestorChart'
@@ -34,8 +34,6 @@ const FamilyTreePage = () => {
   const { total, generationCount } = getMemberSummary(members)
   const branchCount = new Set(members.map((member) => member.branch).filter(Boolean)).size
   const displayMode = getDisplayModeFromSearchParams(searchParams)
-  const activeView = VIEW_TABS.find((tab) => tab.id === viewMode) ?? VIEW_TABS[0]
-  const activeDisplayMode = DISPLAY_MODES.find((mode) => mode.id === displayMode) ?? DISPLAY_MODES[0]
   const isPresentationMode = displayMode === 'elder'
 
   const updateDisplayMode = (nextMode) => {
@@ -63,16 +61,20 @@ const FamilyTreePage = () => {
         { label: 'Thành viên', value: total, detail: 'đang có trên hồ sơ số' },
         { label: 'Thế hệ', value: generationCount, detail: 'từ thủy tổ tới hậu duệ' },
         { label: 'Chi / nhánh', value: branchCount, detail: 'được kết nối trong cây' },
-        {
-          label: 'Chế độ',
-          value: viewMode === 'tree' ? activeDisplayMode.label : activeView.label,
-          detail: viewMode === 'tree' ? activeDisplayMode.desc : activeView.desc,
-        },
       ]}
-      action={<PageShellAction to={ROUTES.STATISTICS}>Xem thống kê gia tộc</PageShellAction>}
+      action={
+        <div className="flex flex-wrap gap-2">
+          <PageShellAction to={ROUTES.BOOK}>
+            <HiBookOpen size={13} className="inline mr-1 -mt-px" />
+            Mở sách gia phả
+          </PageShellAction>
+          <PageShellAction to={ROUTES.STATISTICS}>Xem thống kê</PageShellAction>
+        </div>
+      }
       toolbar={(
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-wrap gap-3">
+        <div className="flex flex-col gap-3">
+          {/* View tabs row */}
+          <div className="flex flex-wrap gap-2">
             {VIEW_TABS.map((tab) => {
               const active = viewMode === tab.id
 
@@ -82,7 +84,7 @@ const FamilyTreePage = () => {
                   type="button"
                   onClick={() => setViewMode(tab.id)}
                   className={clsx(
-                    'group inline-flex items-center gap-2.5 rounded-full border px-4 py-2.5 font-body text-xs tracking-[0.14em] uppercase transition-all duration-200',
+                    'group inline-flex items-center gap-2 rounded-full border px-3 py-2 font-body text-xs tracking-[0.12em] uppercase transition-all duration-200 sm:gap-2.5 sm:px-4 sm:py-2.5',
                     active
                       ? 'border-bronze/50 bg-bronze/10 text-bronze shadow-[0_16px_40px_rgba(0,0,0,0.14)]'
                       : 'border-ivory/10 text-muted hover:border-bronze/20 hover-text-secondary'
@@ -96,7 +98,7 @@ const FamilyTreePage = () => {
                   />
                   <span>{tab.label}</span>
                   {active && (
-                    <span className="text-[10px] normal-case tracking-normal text-bronze/70">
+                    <span className="hidden text-[10px] normal-case tracking-normal text-bronze/70 sm:inline">
                       {tab.desc}
                     </span>
                   )}
@@ -105,10 +107,11 @@ const FamilyTreePage = () => {
             })}
           </div>
 
+          {/* Display mode row — only shown when in tree view */}
           {viewMode === 'tree' && (
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="font-body text-[11px] uppercase tracking-[0.22em] text-bronze/70">
-                Hiển thị cây
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="hidden font-body text-[10px] uppercase tracking-[0.2em] text-bronze/60 sm:inline">
+                Hiển thị
               </span>
               {DISPLAY_MODES.map((mode) => {
                 const active = displayMode === mode.id
@@ -118,8 +121,9 @@ const FamilyTreePage = () => {
                     key={mode.id}
                     type="button"
                     onClick={() => updateDisplayMode(mode.id)}
+                    title={mode.desc}
                     className={clsx(
-                      'rounded-full border px-4 py-2.5 font-body text-sm transition-all duration-200',
+                      'rounded-full border px-3 py-1.5 font-body text-xs transition-all duration-200 sm:px-4 sm:py-2',
                       active
                         ? 'border-bronze/50 bg-bronze/12 text-primary shadow-[0_16px_40px_rgba(0,0,0,0.12)]'
                         : 'border-ivory/10 text-secondary hover:border-bronze/20 hover:text-primary'
