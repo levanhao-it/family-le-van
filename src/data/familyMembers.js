@@ -638,7 +638,7 @@ export const familyMembers = [
   {
     id: 'g3-017',
     fullName: 'Lê Văn Tài',
-    nickname: 'Anh Tài',
+    nickname: 'Thầy Tú',
     gender: 'male',
     birthDate: null,
     deathDate: null,
