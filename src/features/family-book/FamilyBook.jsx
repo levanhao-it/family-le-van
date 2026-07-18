@@ -294,16 +294,18 @@ function PageMember({ member, pageNum, side }) {
 
         <HRule my={8} />
 
-        <InfoRow label="Sinh" value={lifespan} />
-        {member.location && <InfoRow label="Quê" value={member.location} />}
-        {member.occupation && <InfoRow label="Nghề" value={member.occupation} />}
+        {member.deathDate && <InfoRow label="Ngày, tháng, năm sinh" value={lifespan} />}
+        {member.deathDate && <InfoRow label="Ngày, tháng, năm mất" value={member.deathDate} />}
+        <InfoRow label="Giới tính" value={member.gender === "male" ? "Nam" : member.gender === "female" ? "Nữ" : "Khác"} />
+        {member.location && <InfoRow label="Quê quán" value={member.location} />}
+        {member.occupation && <InfoRow label="Nghề nghiệp" value={member.occupation} />}
 
         <HRule my={8} opacity={0.5} />
 
         {/* Biography — flex:1 wrapper + overflow hidden + bottom fade */}
         {member.biography && (
           <div style={{ flex: 1, minHeight: 0, overflow: 'hidden', position: 'relative' }}>
-            <p style={{ fontSize: 10, lineHeight: 1.7, color: C.ink3, margin: 0, fontFamily: 'Be Vietnam Pro,sans-serif' }}>
+            <p style={{ fontSize: 10, lineHeight: 1.7, color: C.ink3, margin: 0, fontFamily: 'Be Vietnam Pro,sans-serif', whiteSpace: 'pre-wrap' }}>
               {member.biography}
             </p>
             <div style={{

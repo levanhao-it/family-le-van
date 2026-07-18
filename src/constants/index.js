@@ -27,6 +27,7 @@ export const NAV_ITEMS = [
   { label: 'Tổng quan', path: '/', icon: 'home' },
   { label: 'Gia phả', path: '/gia-pha', icon: 'tree' },
   { label: 'Lịch sử', path: '/lich-su', icon: 'scroll' },
+  { label: 'Sách gia phả', path: '/sach-gia-pha', icon: 'book' },
   { label: 'Nghi lễ', path: '/nghi-le', icon: 'calendar' },
   { label: 'Hoạt động', path: '/hoat-dong', icon: 'activity' },
   { label: 'Hình ảnh', path: '/hinh-anh', icon: 'gallery' },
@@ -35,11 +36,12 @@ export const NAV_ITEMS = [
   { label: 'Thống kê', path: '/thong-ke', icon: 'chart' },
 ]
 
-export const PRIMARY_NAV_PATHS = [ROUTES.HOME, ROUTES.TREE, ROUTES.TIMELINE, ROUTES.CALENDAR]
+export const PRIMARY_NAV_PATHS = [ROUTES.HOME, ROUTES.TREE, ROUTES.TIMELINE, ROUTES.BOOK]
 
-export const EXPLORE_NAV_ORDER = [ROUTES.GALLERY, ROUTES.TEMPLE, ROUTES.MAP, ROUTES.STATISTICS, ROUTES.ACTIVITIES]
+export const EXPLORE_NAV_ORDER = [ROUTES.CALENDAR, ROUTES.GALLERY, ROUTES.TEMPLE, ROUTES.MAP, ROUTES.STATISTICS, ROUTES.ACTIVITIES]
 
 export const EXPLORE_SUMMARIES = {
+  [ROUTES.CALENDAR]: 'Lịch nghỉ lễ và sự kiện',
   [ROUTES.GALLERY]: 'Tư liệu, ký ức và ảnh gia đình',
   [ROUTES.TEMPLE]: 'Nhà thờ họ và gia huấn dòng tộc',
   [ROUTES.MAP]: 'Quê quán, di cư và dấu mốc',
