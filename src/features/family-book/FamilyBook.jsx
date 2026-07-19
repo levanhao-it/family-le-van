@@ -261,44 +261,47 @@ function PageMember({ member, pageNum, side }) {
           {member.branch ? ` · Chi ${member.branch}` : ''}
         </span>
 
-        {/* Avatar */}
-        <div style={{
-          width: 54, height: 54, borderRadius: '50%', flexShrink: 0,
-          border: '2px solid rgba(122,80,16,0.32)',
-          backgroundColor: 'rgba(122,80,16,0.07)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          marginBottom: 10, overflow: 'hidden',
-        }}>
-          {member.avatar
-            ? <img src={member.avatar} alt={member.fullName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            : <span style={{ fontFamily: 'Playfair Display,serif', fontSize: 20, color: C.amber, fontWeight: 700 }}>
-              {member.fullName.charAt(0)}
-            </span>
-          }
+        {/* Avatar + basic info */}
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 10 }}>
+          <div style={{
+            width: 54, height: 54, borderRadius: '50%', flexShrink: 0,
+            border: '2px solid rgba(122,80,16,0.32)',
+            backgroundColor: 'rgba(122,80,16,0.07)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            overflow: 'hidden',
+          }}>
+            {member.avatar
+              ? <img src={member.avatar} alt={member.fullName} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              : <span style={{ fontFamily: 'Playfair Display,serif', fontSize: 20, color: C.amber, fontWeight: 700 }}>
+                {member.fullName.charAt(0)}
+              </span>
+            }
+          </div>
+
+          <div style={{ marginLeft: 12, minWidth: 0 }}>
+            <h3 style={{ fontSize: 17, fontWeight: 700, lineHeight: 1.2, color: C.ink, margin: '0 0 3px', fontFamily: 'Playfair Display,serif', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {member.fullName}
+            </h3>
+            {member.nickname && (
+              <p style={{ fontSize: 10, fontStyle: 'italic', color: C.ink3, margin: '0 0 2px', fontFamily: 'Be Vietnam Pro,sans-serif', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                "{member.nickname}"
+              </p>
+            )}
+            {roleLabel && member.role !== 'member' && (
+              <p style={{ fontSize: 7.5, color: C.amber, letterSpacing: '0.18em', textTransform: 'uppercase', margin: '2px 0 0', fontFamily: 'Be Vietnam Pro,sans-serif' }}>
+                {roleLabel}
+              </p>
+            )}
+          </div>
         </div>
 
-        {/* Name */}
-        <h3 style={{ fontSize: 17, fontWeight: 700, lineHeight: 1.2, color: C.ink, margin: '0 0 3px', fontFamily: 'Playfair Display,serif', flexShrink: 0 }}>
-          {member.fullName}
-        </h3>
-        {member.nickname && (
-          <p style={{ fontSize: 10, fontStyle: 'italic', color: C.ink3, margin: '0 0 2px', fontFamily: 'Be Vietnam Pro,sans-serif', flexShrink: 0 }}>
-            "{member.nickname}"
-          </p>
-        )}
-        {roleLabel && member.role !== 'member' && (
-          <p style={{ fontSize: 7.5, color: C.amber, letterSpacing: '0.18em', textTransform: 'uppercase', margin: '2px 0 0', fontFamily: 'Be Vietnam Pro,sans-serif', flexShrink: 0 }}>
-            {roleLabel}
-          </p>
-        )}
-
         <HRule my={8} />
-
-        {member.deathDate && <InfoRow label="Ngày, tháng, năm sinh" value={lifespan} />}
-        {member.deathDate && <InfoRow label="Ngày, tháng, năm mất" value={member.deathDate} />}
-        <InfoRow label="Giới tính" value={member.gender === "male" ? "Nam" : member.gender === "female" ? "Nữ" : "Khác"} />
-        {member.location && <InfoRow label="Quê quán" value={member.location} />}
-        {member.occupation && <InfoRow label="Nghề nghiệp" value={member.occupation} />}
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 4, flexWrap: 'wrap', gap: 12 }}>
+          <InfoRow label="Sinh:" value={lifespan} />
+          <InfoRow label="Giới tính:" value={member.gender === "male" ? "Nam" : member.gender === "female" ? "Nữ" : "Khác"} />
+        </div>
+        {member.location && <InfoRow label="Quê quán:" value={member.location} />}
+        {member.occupation && <InfoRow label="Nghề nghiệp:" value={member.occupation} />}
 
         <HRule my={8} opacity={0.5} />
 

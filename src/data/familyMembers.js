@@ -252,7 +252,7 @@ export const familyMembers = [
     childrenIds: [],
     branch: 'main',
     isAlive: false,
-    location: 'Chùa Quảng Hiệp, Ấp 3, Xã Tân Hiệp,Huyện Long Thành, Thành phố Đồng Nai',
+    location: 'Chùa Quảng Hiệp, Ấp 3, X.Tân Hiệp,H.Long Thành, TP.Đồng Nai',
   },
   {
     id: 'g2-010',
