@@ -308,7 +308,7 @@ function PageMember({ member, pageNum, side }) {
         {/* Biography — flex:1 wrapper + overflow hidden + bottom fade */}
         {member.biography && (
           <div style={{ flex: 1, minHeight: 0, overflow: 'hidden', position: 'relative' }}>
-            <p style={{ fontSize: 10, lineHeight: 1.7, color: C.ink3, margin: 0, fontFamily: 'Be Vietnam Pro,sans-serif', whiteSpace: 'pre-wrap' }}>
+            <p style={{ fontSize: 9, lineHeight: 1.7, color: C.ink3, margin: 0, fontFamily: 'Be Vietnam Pro,sans-serif', whiteSpace: 'pre-wrap' }}>
               {member.biography}
             </p>
             <div style={{
